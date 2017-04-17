@@ -8,7 +8,10 @@ export default class Storage
         this.driver = null;
         this.inst = null;
     }
-
+    /**
+     * уточнение драйвера
+     * @param {*драйвер} param0 
+     */
     config ({driver}) 
     {
         this.driver = driver;
@@ -28,6 +31,10 @@ export default class Storage
         };
     }
 
+    /**
+     * Потдерживается ли хранилище в браузере
+     * @param {*драйвер} name 
+     */
     test (name)
     {
         if (name in window) {
@@ -36,8 +43,26 @@ export default class Storage
         return false;
     }
     
+    /**
+     * Возвратит обьект драйвера
+     */
     app ()
     {
         return this.inst;
+    }
+
+    static install (Vue, {driver})
+    {
+        let storage = new Storage ();
+        if (process.BROWSER_BUILD) {
+            storage.config({driver: driver});
+        }
+        Object.defineProperty(Vue.prototype, "$storage", {
+            get () {
+                if (process.BROWSER_BUILD) {
+                    return storage.app();
+                }
+            }
+        });
     }
 }
