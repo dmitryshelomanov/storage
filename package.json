@@ -1,60 +1,9 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "helper-storage@^1.0.3",
-        "scope": null,
-        "escapedName": "helper-storage",
-        "name": "helper-storage",
-        "rawSpec": "^1.0.3",
-        "spec": ">=1.0.3 <2.0.0",
-        "type": "range"
-      },
-      "E:\\OpenServer\\domains\\diplom\\client"
-    ]
-  ],
-  "_from": "helper-storage@>=1.0.3 <2.0.0",
-  "_id": "helper-storage@1.0.4",
-  "_inCache": true,
-  "_location": "/helper-storage",
-  "_nodeVersion": "7.7.2",
-  "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/helper-storage-1.0.4.tgz_1492379240966_0.7087663675192744"
-  },
-  "_npmUser": {
-    "name": "bq201",
-    "email": "yzdrf98@mail.ru"
-  },
-  "_npmVersion": "4.1.2",
-  "_phantomChildren": {},
-  "_requested": {
-    "raw": "helper-storage@^1.0.3",
-    "scope": null,
-    "escapedName": "helper-storage",
-    "name": "helper-storage",
-    "rawSpec": "^1.0.3",
-    "spec": ">=1.0.3 <2.0.0",
-    "type": "range"
-  },
-  "_requiredBy": [
-    "#DEV:/",
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/helper-storage/-/helper-storage-1.0.4.tgz",
-  "_shasum": "dbe1fd6a5439a9e631d953bacebff3b26fcd72af",
-  "_shrinkwrap": null,
-  "_spec": "helper-storage@^1.0.3",
-  "_where": "E:\\OpenServer\\domains\\diplom\\client",
   "author": {
     "name": "bq201",
     "email": "yzdrf98@mail.ru"
   },
-  "bugs": {
-    "url": "https://github.com/userbq201/storage/issues"
-  },
   "dependencies": {},
-  "description": "```js\r // методы\r add (k, v){}\r get (k, callback(error, value)){}\r remove (k, callback(error, key)){}\r length (){}\r clear (){}\r has (k){}\r ```",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
@@ -66,29 +15,15 @@
     "babel-runtime": "^6.23.0",
     "webpack": "^2.3.3"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "dbe1fd6a5439a9e631d953bacebff3b26fcd72af",
-    "tarball": "https://registry.npmjs.org/helper-storage/-/helper-storage-1.0.4.tgz"
-  },
-  "gitHead": "e5e7c5db5e807942470b1cb4cac0c3f5a271a914",
-  "homepage": "https://github.com/userbq201/storage#readme",
   "keywords": [],
   "license": "ISC",
   "main": "./src/index.js",
-  "maintainers": [
-    {
-      "name": "bq201",
-      "email": "yzdrf98@mail.ru"
-    }
-  ],
   "name": "helper-storage",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/userbq201/storage.git"
   },
   "scripts": {},
-  "version": "1.0.4"
+  "version": "1.0.5"
 }

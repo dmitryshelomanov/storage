@@ -54,15 +54,10 @@ export default class Storage
     static install (Vue, {driver})
     {
         let storage = new Storage ();
-        if (process.BROWSER_BUILD) {
-            storage.config({driver: driver});
-        }
+        storage.config({driver: driver});
         Object.defineProperty(Vue.prototype, "$storage", {
             get () {
-                if (process.BROWSER_BUILD) {
-                    return storage.app();
-                }
+                return storage.app();
             }
         });
     }
-}
