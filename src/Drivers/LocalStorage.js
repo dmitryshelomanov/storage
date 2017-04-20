@@ -20,7 +20,7 @@ export default class extends Storage
             let v = JSON.parse (window.localStorage.getItem (k));
             return callback (this.error, v);
         }
-        return callback (this.error, k);
+        return callback (this.error, null);
     }
 
     remove (k, callback)

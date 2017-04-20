@@ -1,5 +1,5 @@
-## обертка для хранилищ (sessionStorage & localStorage)
-### ипользование
+## Обертка для хранилищ (sessionStorage & localStorage)
+### Ипользование
 ```js
 // методы
 add (k, v){}
@@ -22,7 +22,7 @@ st.app ().get ('name', (e, v) => {
   console.log (v);
 });	
 ```
-### при использовании во vue
+### При использовании во vue
 ```js
 import Vue from "vue";
 import Storage from 'helper-storage';
@@ -36,3 +36,17 @@ this.$storage.get('authUser', (e,v) => {//this.$storage во вью доступ
     this.$store.commit('userStore/SET_AUTH_USER', v);
 });
 ```
+### При использовании с nuxt 
+нужно в файле nuxt.config.js подключить плагин
+~plugins/storage.js
+```js
+import Vue from "vue";
+import Storage from "helper-storage";
+
+Vue.use(Storage, {
+    driver: "localStorage"
+});
+// config
+  plugins: [
+    {src: '~plugins/storage.js'}
+  ]
