@@ -1,60 +1,39 @@
-import LocalStorage from "./Drivers/LocalStorage";
-import SessionStorage from "./Drivers/SessionStorage";
+import Strategy from "./Strategy";
 
 export default class Storage
 {
-    constructor ()
+    constructor (type = 'localStorage', switching = false)
     {
-        this.driver = null;
         this.inst = null;
-    }
-    /**
-     * уточнение драйвера
-     * @param {*драйвер} param0 
-     */
-    config ({driver}) 
-    {
-        this.driver = driver;
-        switch (this.driver) {
-            case "localStorage":
-                if (this.test ('localStorage')) {
-                    this.inst = new LocalStorage ();
-                    return true;    
-                }
-                return true;
-            case "sessionStorage":
-                if (this.test ('sessionStorage')) {
-                    this.inst = new SessionStorage ();
-                    return true;
-                }
-                return true;
-        };
+        this.type = type;
+        this.switching = switching;
     }
 
-    /**
-     * Потдерживается ли хранилище в браузере
-     * @param {*драйвер} name 
-     */
-    test (name)
+    app()
     {
-        if (name in window) {
-            return true;
+        if (this.type in window) {
+            return this.singleton(new Strategy(this.type));
+        } else {
+            this.switching
+                ? this.singleton(new Strategy(this.switchingType()))
+                : console.error(`${this.type} not support`);
         }
-        return false;
     }
-    
-    /**
-     * Возвратит обьект драйвера
-     */
-    app ()
-    {
+
+    singleton(object) {
+        if (this.inst === null) {
+            return this.inst = object;
+        }
         return this.inst;
     }
 
-    static install (Vue, {driver})
+    switchingType() {
+        return this.type === 'localStorage' ? 'localStorage' : 'sessionStorage';
+    }
+
+    static install(Vue, type)
     {
         let storage = new Storage ();
-        storage.config({driver: driver});
         Object.defineProperty(Vue.prototype, "$storage", {
             get () {
                 return storage.app();
