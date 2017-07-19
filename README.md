@@ -12,14 +12,12 @@ has (k){}
 
 ```js
 import Storage from "helper-storage";
-let st = new Storage ();
-st.config ({
-  driver: "sessionStorage",
-});
-st.app ().add ('name', 'dima');
+let st = new Storage (type, switching); // switching - если не потдерживается выбранный type то замениться на другой
 
-st.app ().get ('name', (e, v) => {
-  console.log (v);
+st.app().add('name', 'dima');
+
+st.app().get('name', (e, v) => {
+  console.log(v);
 });	
 ```
 ### При использовании во vue
@@ -27,9 +25,7 @@ st.app ().get ('name', (e, v) => {
 import Vue from "vue";
 import Storage from 'helper-storage';
 
-Vue.use(Storage, {
-    driver: "localStorage" // указание драйвера уже не через метод
-});
+Vue.use(Storage);
 
 // пример использования $storage
 this.$storage.get('authUser', (e,v) => {//this.$storage во вью доступ к классу
@@ -37,16 +33,13 @@ this.$storage.get('authUser', (e,v) => {//this.$storage во вью доступ
 });
 ```
 ### При использовании с nuxt 
-нужно в файле nuxt.config.js подключить плагин
-~plugins/storage.js
+
 ```js
 import Vue from "vue";
 import Storage from "helper-storage";
 
-Vue.use(Storage, {
-    driver: "localStorage"
-});
+Vue.use(Storage);
 // config
   plugins: [
-    {src: '~plugins/storage.js'}
+    {src: '~plugins/storage.js', ssr: false}
   ]
